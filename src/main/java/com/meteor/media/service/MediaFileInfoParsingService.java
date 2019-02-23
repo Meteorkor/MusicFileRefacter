@@ -11,6 +11,11 @@ import com.mpatric.mp3agic.InvalidDataException;
 import com.mpatric.mp3agic.NotSupportedException;
 import com.mpatric.mp3agic.UnsupportedTagException;
 
+/**
+ * @TODO 메타 변경 및 파일 저장은 병렬처리로
+ * @author kimunseok
+ *
+ */
 @Service
 public class MediaFileInfoParsingService {
 
