@@ -29,10 +29,19 @@ public class ApplicationRunnerImple implements ApplicationRunner{
 	public void run(ApplicationArguments args) throws Exception {
 		
 		String filePath = "";	
-//		service.mediaDirParse("G:\\JOY\\mp3\\etc");
+		try {
+			service.mediaDirParsePrint("G:\\JOY\\mp3\\etc");
+		} catch (Throwable e1) {
+			throw new Exception(e1);
+		}
 		
-		
-		service.mediaFileParse(filePath);
+		/*
+		try {
+			service.mediaFileParsePrint(filePath);
+		} catch (Throwable e) {
+			throw new Exception(e);
+		}
+		*/
 	}
 
 }

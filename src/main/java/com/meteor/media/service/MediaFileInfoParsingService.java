@@ -20,20 +20,20 @@ import com.mpatric.mp3agic.UnsupportedTagException;
 public class MediaFileInfoParsingService {
 
 	@Autowired
-	private MediaFileInfoParser parser;
+	private ImediaFileRefactor parser;
 	
-	public void mediaDirParse(String fileDir) throws IOException, SAXException, UnsupportedTagException, InvalidDataException, NotSupportedException {
+	public void mediaDirParsePrint(String fileDir) throws Throwable {
 		File dirFile = new File(fileDir);
 		if(dirFile.isDirectory()) {
 			for(File file : dirFile.listFiles()) {
 				if(file.isFile()) {
-					mediaFileParse(file.getAbsolutePath());							
+					mediaFileParsePrint(file.getAbsolutePath());							
 				}
 			}
 		}
 	}
 	
-	public void mediaFileParse(String filePath) throws IOException, SAXException, UnsupportedTagException, InvalidDataException, NotSupportedException {
+	public void mediaFileParsePrint(String filePath) throws Throwable {
 		parser.printFileInfo(filePath);
 	}
 	

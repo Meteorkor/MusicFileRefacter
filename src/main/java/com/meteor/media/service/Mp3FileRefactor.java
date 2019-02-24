@@ -13,7 +13,7 @@ import com.mpatric.mp3agic.NotSupportedException;
 import com.mpatric.mp3agic.UnsupportedTagException;
 
 @Component
-public class MediaFileInfoParser {
+public class Mp3FileRefactor implements ImediaFileRefactor{
 	public void printFileInfo(String filePath) throws IOException, SAXException, UnsupportedTagException, InvalidDataException, NotSupportedException {
 		Mp3File mp3file = new Mp3File(filePath);
 		ID3v2 id3v2Tag = null;
@@ -30,5 +30,4 @@ public class MediaFileInfoParser {
 		
 		
 	}
-
 }
