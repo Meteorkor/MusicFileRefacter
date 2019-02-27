@@ -1,10 +1,13 @@
 package com.meteor.media;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import com.meteor.media.model.MediaFileInfoModel;
 import com.meteor.media.service.MediaFileInfoParsingService;
 
 /**
@@ -29,8 +32,9 @@ public class ApplicationRunnerImple implements ApplicationRunner{
 	public void run(ApplicationArguments args) throws Exception {
 		
 		String filePath = "";	
+		List<MediaFileInfoModel> list = null;
 		try {
-			service.mediaDirParsePrint("G:\\JOY\\mp3\\etc");
+			list = service.mediaDirParsePrint("G:\\JOY\\mp3\\etc");
 		} catch (Throwable e1) {
 			throw new Exception(e1);
 		}

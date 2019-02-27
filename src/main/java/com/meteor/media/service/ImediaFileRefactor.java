@@ -1,6 +1,12 @@
 package com.meteor.media.service;
 
+import com.meteor.media.model.MediaFileInfoModel;
+
+/**
+ * @author kimunseok
+ *
+ */
 public interface ImediaFileRefactor {
-	public void printFileInfo(String filePath) throws Throwable;
+	public MediaFileInfoModel getMediaFileInfo(String filePath) throws Throwable;
 
 }
