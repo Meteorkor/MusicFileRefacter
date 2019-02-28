@@ -34,9 +34,13 @@ public class ApplicationRunnerImple implements ApplicationRunner{
 		String filePath = "";	
 		List<MediaFileInfoModel> list = null;
 		try {
-			list = service.mediaDirParsePrint("G:\\JOY\\mp3\\etc");
+			list = service.mediaDirParsePrint("E:\\개인\\music\\[2013.10.22] PRINCE");
 		} catch (Throwable e1) {
 			throw new Exception(e1);
+		}
+		
+		for(MediaFileInfoModel model : list) {
+			System.out.println(model.toString());
 		}
 		
 		/*

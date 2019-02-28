@@ -26,7 +26,10 @@ public class MediaFileInfoParsingService {
 		if(dirFile.isDirectory()) {
 			for(File file : dirFile.listFiles()) {
 				if(file.isFile()) {
-					fileInfoModel.add(mediaFileParsePrint(file.getAbsolutePath()));
+					String abPath = file.getAbsolutePath();
+					if(abPath.endsWith(".mp3") || abPath.endsWith(".flac")) {
+						fileInfoModel.add(mediaFileParsePrint(abPath));	
+					}
 				}
 			}
 		}
