@@ -31,13 +31,17 @@ public class ApplicationRunnerImple implements ApplicationRunner{
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
-		String filePath = "";	
+		String filePath = "G\\Music";
+		
+		
 		List<MediaFileInfoModel> list = null;
 		try {
-			list = service.mediaDirParsePrint("E:\\개인\\music\\[2013.10.22] PRINCE");
+			list = service.mediaDirParsePrint(filePath);
 		} catch (Throwable e1) {
 			throw new Exception(e1);
 		}
+		
+		System.out.println("FileCnt : " + list.size());
 		
 		for(MediaFileInfoModel model : list) {
 			System.out.println(model.toString());

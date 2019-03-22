@@ -17,23 +17,38 @@ import com.meteor.media.model.MediaFileInfoModel;
 @Service
 public class MediaFileInfoParsingService {
 
+	private final String[] musicExtension = {"mp3", "flac"};
 	@Autowired
 	private ImediaFileRefactor parser;
 	
+	/**
+	 * 해당 디렉토리 하위 노래들에 대해 정보들을 담은 파일들을 리턴
+	 * @param fileDir
+	 * @return
+	 * @throws Throwable
+	 */
 	public List<MediaFileInfoModel> mediaDirParsePrint(String fileDir) throws Throwable {
+		return mediaDirParseInner(new File(fileDir));
+	}
+	
+	private List<MediaFileInfoModel> mediaDirParseInner(File dir) throws Throwable{
 		List<MediaFileInfoModel> fileInfoModel = new ArrayList<>();
-		File dirFile = new File(fileDir);
-		if(dirFile.isDirectory()) {
-			for(File file : dirFile.listFiles()) {
+		if(dir.isDirectory()) {
+			for(File file : dir.listFiles()) {
 				if(file.isFile()) {
 					String abPath = file.getAbsolutePath();
-					if(abPath.endsWith(".mp3") || abPath.endsWith(".flac")) {
-						fileInfoModel.add(mediaFileParsePrint(abPath));	
+					for(String extension : musicExtension) {
+						if(abPath.endsWith(extension)) {
+							fileInfoModel.add(mediaFileParsePrint(abPath));
+							break;
+						}
 					}
+				}else if(file.isDirectory()) {
+					fileInfoModel.addAll(mediaDirParseInner(file)  );
 				}
 			}
 		}
-		return fileInfoModel;
+		return fileInfoModel;		
 	}
 	
 	public MediaFileInfoModel mediaFileParsePrint(String filePath) throws Throwable {
